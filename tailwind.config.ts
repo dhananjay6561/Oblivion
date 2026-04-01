@@ -9,8 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        obsidian: "#080808",
+        "off-white": "#F0EDE8",
+        "acid-green": "#C8FF00",
+        "tension-red": "#FF2D2D",
+        panel: "#1C1C1C",
+      },
+      fontFamily: {
+        editorial: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
+        mono: ["var(--font-space-mono)", "Space Mono", "monospace"],
+        body: ["var(--font-inter)", "Inter", "sans-serif"],
+      },
+      fontSize: {
+        "hero": "clamp(48px, 14vw, 220px)",
       },
     },
   },
