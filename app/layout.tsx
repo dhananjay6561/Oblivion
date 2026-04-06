@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, Space_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://oblivion-collective.vercel.app";
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -24,20 +26,59 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Oblivion Collective — We Finish What Others Were Afraid to Start",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Oblivion Collective | Creative Direction for Bold Brands",
+    template: "%s | Oblivion Collective",
+  },
   description:
-    "A dark creative agency that takes on projects other studios refused. Creative direction for the projects that never made headlines.",
+    "Oblivion Collective is a creative studio for brands with sharp ambition. We design bold visual systems, narratives, and digital experiences that stand out.",
+  keywords: [
+    "Oblivion Collective",
+    "creative agency",
+    "creative direction",
+    "brand strategy",
+    "digital experiences",
+    "visual identity",
+    "portfolio website",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: [{ url: "/favicon.ico" }],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/favicon.ico" }],
+  },
   openGraph: {
-    title: "Oblivion Collective",
-    description: "We finish what others were afraid to start.",
+    title: "Oblivion Collective | Creative Direction for Bold Brands",
+    description:
+      "Brand strategy, creative direction, and digital storytelling for projects that need a distinct point of view.",
+    url: "/",
+    siteName: "Oblivion Collective",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    locale: "en_US",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Oblivion Collective" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oblivion Collective",
-    description: "We finish what others were afraid to start.",
+    title: "Oblivion Collective | Creative Direction for Bold Brands",
+    description:
+      "Brand strategy, creative direction, and digital storytelling for projects that need a distinct point of view.",
+    images: ["/twitter-image"],
   },
+  category: "design",
 };
 
 export default function RootLayout({
@@ -45,9 +86,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Oblivion Collective",
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon.ico`,
+    sameAs: [],
+  };
+
   return (
     <html lang="en" className={`${playfair.variable} ${spaceMono.variable} ${inter.variable}`}>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

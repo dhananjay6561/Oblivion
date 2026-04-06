@@ -13,14 +13,23 @@ export default function FullscreenHero() {
     <section className="relative w-full min-h-screen bg-obsidian flex flex-col overflow-hidden">
       {/* Top bar */}
       <div className="flex justify-between items-start px-6 md:px-10 pt-8 md:pt-10">
-        <motion.span
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="font-mono text-[11px] text-off-white/60 tracking-[0.3em] uppercase"
+          className="flex items-center gap-3"
         >
-          OBLIVION
-        </motion.span>
+          <span
+            className="inline-flex items-center justify-center rounded-full border border-panel bg-black/50"
+            style={{ width: 28, height: 28 }}
+            aria-hidden="true"
+          >
+            <span className="text-[10px] text-off-white">▲</span>
+          </span>
+          <span className="font-body text-[20px] leading-none text-off-white tracking-[0.01em]">
+            Oblivion Collective
+          </span>
+        </motion.div>
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
