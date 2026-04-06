@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  cursor: none !important;
-}
-
 html {
   background-color: #080808;
   scroll-behavior: auto;

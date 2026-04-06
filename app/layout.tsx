@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Space_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import CursorProvider from "@/components/CursorProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -49,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${spaceMono.variable} ${inter.variable}`}>
       <body className="antialiased">
-        <CursorProvider>{children}</CursorProvider>
+        {children}
       </body>
     </html>
   );
